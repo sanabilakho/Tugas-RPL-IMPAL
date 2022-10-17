@@ -1,0 +1,37 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int ComputerAmount, BaseFee, AdditionalFee, ServiceTime;
+    char DropOff, PickUp; 
+
+    cin >> ComputerAmount;
+    cin >> ServiceTime;
+    cin >> DropOff;
+    cin >> PickUp;
+    if (ComputerAmount == 1 || ComputerAmount == 2) {
+        BaseFee = 50;
+        AdditionalFee = 0;
+    } else if (ComputerAmount >= 3 && ComputerAmount <= 10) {
+        BaseFee = 100;
+        AdditionalFee = ComputerAmount * 10;
+    } else if (ComputerAmount > 10) {
+        BaseFee = 500;
+        AdditionalFee = ComputerAmount * 10;
+    }
+
+    if (ServiceTime < 9 || ServiceTime > 17) {
+        BaseFee *= 2;
+    }
+
+    if (PickUp == 'y' && DropOff =='y') {
+        BaseFee /= 2;
+    }
+
+    BaseFee += AdditionalFee;
+    cout << BaseFee;
+
+    return 0;
+}
